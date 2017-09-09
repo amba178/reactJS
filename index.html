@@ -8,22 +8,21 @@
 
   </head>
   <body>
-      <div id="root"> salem </div>
+      <div id="root"> </div>
       <script type="text/babel">
-          var str = "World!"
-          var length = 20 
-          var width = 10
-          function calculateArea(x, y){
-            return x*y
-          }
-          var styleObject = {
-          backgroundColor: 'red',
-          color: 'blue'
-          }
+        function HelloWorld(props) {
+          return <h1> Message: {props.message}</h1>
+        }
 
+        function HelloWorld2(props){
+          return <h1>value: {props.numberArray[props.index]}</h1>
+
+        }
+    
           ReactDOM.render(
-              <div style= {styleObject}>This Area is: {calculateArea(length, width)}</div>,
-              document.getElementById("root")
+            <HelloWorld2  index ="4" numberArray={[1, 2, 3, 4, 5]}/>, 
+            document.getElementById("root")
+              
           )
       </script>
   
