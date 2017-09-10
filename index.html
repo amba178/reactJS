@@ -8,22 +8,38 @@
 
   </head>
   <body>
-      <div id="root"> salem </div>
+      <div id="root"><div>
       <script type="text/babel">
-          var str = "World!"
-          var length = 20 
-          var width = 10
-          function calculateArea(x, y){
-            return x*y
-          }
-          var styleObject = {
-          backgroundColor: 'red',
-          color: 'blue'
-          }
+          
+    function Feature(props){
+        if (props.active == true){
+            return <h1>This feature is active</h1>
+        }
+        else{
+            return <h1>This feature is not active</h1>
+        }
+
+    }
+
+
+    function Feature2 (props){
+        return(
+          <h1> This feature is {props.active? "ON" : "OFF"}</h1>
+        )
+
+    }
+
+
+    function Feature1(props){
+        return (
+            props.active && <h1>{props.message}</h1>
+        )
+    }
 
           ReactDOM.render(
-              <div style= {styleObject}>This Area is: {calculateArea(length, width)}</div>,
-              document.getElementById("root")
+            <Feature2 active = {false}/>, 
+            document.getElementById("root")
+        
           )
       </script>
   
