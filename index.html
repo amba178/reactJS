@@ -10,21 +10,29 @@
   <body>
       <div id="root"> salem </div>
       <script type="text/babel">
-          var str = "World!"
-          var length = 20 
-          var width = 10
-          function calculateArea(x, y){
-            return x*y
+          class Counter extends React.Component{
+              constructor(props){
+              super(props)
+              this.state = {count:0}
+              //binding is necessary to make `this` point to the correct object
+              this.clickHandler = this.clickHandler.bind(this)
           }
-          var styleObject = {
-          backgroundColor: 'red',
-          color: 'blue'
-          }
+          clickHandler(){
+            //increments the count of the state
+            this.setState((prevState,props) => {
+            return {count: prevState.count + 1}
+          })
+        }
+      render(){
+            //renders a button that displays the state count
+            return <button onClick = {this.clickHandler}>{this.state.count}</button>
+        }
+    }
 
-          ReactDOM.render(
-              <div style= {styleObject}>This Area is: {calculateArea(length, width)}</div>,
-              document.getElementById("root")
-          )
+      ReactDOM.render(
+             <Counter/>,
+            document.getElementById("root")
+      ) 
       </script>
   
   </body>
