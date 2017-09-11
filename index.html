@@ -10,19 +10,18 @@
   <body>
       <div id="root"> salem </div>
       <script type="text/babel">
-          var str = "World!"
-          var length = 20 
-          var width = 10
-          function calculateArea(x, y){
-            return x*y
+         class Counter extends React.Component{
+              constructor(props){
+              super(props)
+              this.state = {foo:123,bar:456}
           }
-          var styleObject = {
-          backgroundColor: 'red',
-          color: 'blue'
+            render(){
+                  return <div>foo:{this.state.foo} bar:{this.state.bar}</div>
+                }
           }
-
+          
           ReactDOM.render(
-              <div style= {styleObject}>This Area is: {calculateArea(length, width)}</div>,
+             <Counter/>,
               document.getElementById("root")
           )
       </script>
