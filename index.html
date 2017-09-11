@@ -5,43 +5,160 @@
        <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" 
        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+       
+       <link rel="stylesheet"  href="./styleSheet.css">
        <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
 
   </head>
   <body>
-      <div id="root" class="container"><div>
+      <div id="root"><div>
       <script type="text/babel">
           
-    function Feature(props){
-        if (props.active == true){
-            return (<h1>This feature is active</h1>)
+        function PageTitle(props){
+          return( 
+              <div>
+                <h2>{props.title}</h2>
+                <h5>{props.subtitle}</h5>
+                 <br/>
+                 <br/>
+              </div>
+           )
         }
-        else{
-            return (<h1>This feature is not active</h1>)
+
+        function SelectItem(props){
+          return(
+            <div>
+              <h4>{props.title}</h4>
+            </div>
+          )
         }
 
-    }
+        function CheckBox(props){
+          return(
+          <div>
+            <label for = {props.for}> {props.label} </label>
+            <input type={props.type} id={props.id} name={props.name} value={props.value}/>
+          </div>
+          )
+        }
 
-
-    function Feature2 (props){
+        function SelectOption(props){
         return(
-          <h1> This feature is {props.active? "ON" : "OFF"}</h1>
+          <div>
+            <select>
+              <option value={props.value[0]}>{props.value[0]}</option>
+              <option value={props.value[1]}>{props.value[1]}</option>
+              <option value={props.value[2]}>{props.value[2]}</option>
+              <option value={props.value[3]}>{props.value[3]}</option>
+            </select>
+          </div>
         )
+        }
 
-    }
+      function Cars(props){
+        return(
+               <Table price={props.price} model={props.model} year={props.year} buy={props.buy}/>
+            )
+      }
 
-
-    function Feature1(props){
-        return (
-            props.active && <h1>{props.message}</h1>
+      function Title(props){
+        return(
+          <div  className="page-header">
+           <h4>{props.title}</h4>
+          </div>
         )
-    }
+      }
+
+      function All(props){
+        return(
+              <div>
+            
+              </div>
+        )
+      }
+
+      function Trucks(props){
+        return(
+              <div>
+                <Table price={props.price} model={props.model} year={props.year} buy={props.buy}/>
+              </div>
+        )
+      }
+
+      function Convertibles(props){
+        return(
+              <div>
+               <Table price={props.price} model={props.model} year={props.year} buy={props.buy}/>
+              </div>
+        )
+      }
+
+      function TableHeader(){
+        return(
+          <tr>
+            <th>Year</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Buy</th>
+          </tr>
+        )
+      }
+
+    
+      function Table(props){
+        return(
+              <div>
+                <table className="table table-bordered">
+                  <thead className="thead-default">
+                    <TableHeader/>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{props.year}</td>
+                      <td>{props.model}</td>
+                      <td>${props.price}</td>
+                      <td>
+                        <button type="button" className="btn btn-primary">{props.buy}</button>
+                      </td>
+                    
+                    </tr>
+                  </tbody>
+                </table>
+            
+              </div>
+        )
+      }
+
+        function PageApp(){
+          return (<div>
+            <PageTitle title= "Welcome to React Transportation" subtitle ="The best place to buy vehicles online"/> 
+            <SelectItem title="Choose Options"/>
+            <CheckBox for="coding" type="checkbox"  id ="coding" name="interest" value="coding" label="New Only"/>
+            <SelectOption value = {["All", "Cars", "Trucks", "Convertible"]}/>
+            <Title title="Cars"/>
+            <br/>
+            <Cars  price="3200" year="2013" model="A"  buy="Buy Now"/>
+            <Cars  price="3200" year="2014" model="M"  buy="Buy Now"/>
+            <Cars  price="3200" year="2016" model="L"  buy="Buy Now"/>
+            <Title title="Truck"/>
+            <br/>
+            <Trucks price="113200" year="2013" model="FrontLiner"  buy="Buy Now"/>
+            <Trucks price="233200" year="2014" model="Volvo-123"       buy="Buy Now"/>
+            <Trucks price="2343200" year="2016" model="Mercedes"   buy="Buy Now"/>
+            <Title title="Convertibles"/>
+            <br/>
+            <Convertibles price="113200" year="2013" model="XL"  buy="Buy Now"/>
+            <Convertibles price="233200" year="2014" model="SC"       buy="Buy Now"/>
+            <Convertibles price="2343200" year="2016" model="MX"   buy="Buy Now"/>
+            <Convertibles price="2343200" year="2016" model="LX"   buy="Buy Now"/>
+          </div>
+          )
+        }
 
           ReactDOM.render(
-            <Feature active = {true}/>, 
-            document.getElementById("root")
-        
+            <PageApp/>, 
+           document.getElementById("root")
           )
       </script>
   
