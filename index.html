@@ -11,15 +11,20 @@
       <div id="root"> salem </div>
       <script type="text/babel">
          class Counter extends React.Component{
-              constructor(props){
-              super(props)
-              this.state = {foo:123,bar:456}
-          }
+            constructor(props){
+                super(props)
+              //initial state set up
+                this.state = {message:"initial message", value: 0}
+
+             }
+          componentDidMount(){
+                //updating state
+                this.setState({message:"new message", value: this.state.value+1})
+             }
             render(){
-                  return <div>foo:{this.state.foo} bar:{this.state.bar}</div>
-                }
-          }
-          
+                 return <div>Message: {this.state.message}, Count: {this.state.value} </div>
+               }
+            }
           ReactDOM.render(
              <Counter/>,
               document.getElementById("root")
