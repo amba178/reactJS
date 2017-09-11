@@ -10,21 +10,17 @@
   <body>
       <div id="root"> salem </div>
       <script type="text/babel">
-          var str = "World!"
-          var length = 20 
-          var width = 10
-          function calculateArea(x, y){
-            return x*y
-          }
-          var styleObject = {
-          backgroundColor: 'red',
-          color: 'blue'
-          }
+          class Welcome extends React.Component{
+            render(){
+                return <h1> Message: {this.props.message}</h1>
+               }
+            } 
 
-          ReactDOM.render(
-              <div style= {styleObject}>This Area is: {calculateArea(length, width)}</div>,
-              document.getElementById("root")
-          )
+          
+      ReactDOM.render(
+                 <Welcome message="Hello World!"/>,
+                document.getElementById("root")
+            )
       </script>
   
   </body>
